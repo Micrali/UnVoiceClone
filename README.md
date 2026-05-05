@@ -520,10 +520,3 @@ models/pretrained/
 ## 开源协议
 
 本项目采用 Apache 2.0 开源协议，详见 `LICENSE` 文件。
-
-## 关于我们
-
-本项目由“用声无恙”团队研发，专注于生成式 AI 时代的语音安全、声纹隐私保护与主动防御技术研究。
-
-- 技术交流：GitHub Issues
-- 商务合作：unvoiceclone@proton.me
