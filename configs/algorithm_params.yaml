@@ -1,0 +1,15 @@
+defense:
+  default_level: standard
+  epsilon:
+    light: 0.08
+    standard: 0.15
+    deep: 0.24
+  sample_rate: 16000
+  target_similarity: 0.8473
+  blackbox_success_rate: 0.6629
+  compression_success_rate: 0.6004
+optimizer:
+  method: SAM
+  learning_rate: 0.0003
+  steps: 24
+  gaussian_sigma: 0.015

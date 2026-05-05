@@ -1,0 +1,6 @@
+server:
+  backend_host: 127.0.0.1
+  backend_port: 5000
+  frontend_host: 127.0.0.1
+  frontend_port: 8080
+  upload_limit_mb: 500
