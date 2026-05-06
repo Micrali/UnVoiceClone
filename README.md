@@ -39,6 +39,35 @@
 - **SAM 扰动优化策略**：引入梯度正则化与锐度感知最小化思想，提升防御扰动在多模型、多平台下的稳定性。
 - **Web 端交互闭环**：支持音频防御、视频防御、音频转换测试、音频合成测试、控制台看板与系统配置演示。
 
+## GitHub Pages 前端展示
+
+本仓库已将静态前端页面放置在仓库根目录，上传到 GitHub 后可以直接通过 GitHub Pages 展示前端页面，无需运行 Python 后端或 Node.js 构建流程。
+
+### 部署方式
+
+1. 将本项目上传到 GitHub 仓库。
+2. 进入仓库 `Settings` → `Pages`。
+3. `Source` 选择 `Deploy from a branch`。
+4. `Branch` 选择 `main`，目录选择 `/root`。
+5. 保存后等待 GitHub Pages 构建完成。
+
+部署完成后访问地址格式为：
+
+```text
+https://你的GitHub用户名.github.io/UnVoiceClone/
+```
+
+### 可直接展示的页面
+
+- 首页：`index.html`
+- 登录页：`auth.html`
+- 控制台：`dashboard.html`
+- 音频防御：`audio-defend.html`
+- 视频防御：`video-defend.html`
+- 音频转换测试：`audio-transform.html`
+- 音频合成测试：`audio-synthesis.html`
+- 系统设置：`settings.html`
+
 ## 快速开始
 
 ### 环境准备

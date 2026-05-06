@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>用声无恙 - 声纹隐私保护系统</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="components.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+</head>
+<body class="macaron-page">
+  <script>renderHeader('index')</script>
+
+  <section class="hero-macaron" id="home">
+    <div class="geo g1"></div><div class="geo g2"></div><div class="geo g3"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1 class="hero-title">用声无恙</h1>
+        <h2 class="hero-subtitle">面向语音克隆滥用的声纹隐私保护系统</h2>
+        <p class="hero-slogan">从源头阻断语音克隆，守护每一段声音的安全</p>
+        <p class="hero-note">UnVoiceClone・鲁棒主动防御系统 | 高抗克隆・高保真・强鲁棒・强泛化</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="audio-defend.html">立即上传体验</a>
+          <a class="btn btn-pink" href="#tech">了解技术原理</a>
+        </div>
+      </div>
+      <div class="voice-illustration" aria-label="声音保护插画">
+        <div class="protect-bubble"></div>
+        <div class="shield-voice"><div class="wave-rings"><i></i><i></i><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="background">
+    <div class="container">
+      <span class="kicker">项目背景</span>
+      <h2 class="section-title">语音克隆风险正在从技术问题变成<span>社会安全问题</span></h2>
+      <p class="section-desc">公开音视频中的声音样本可能被快速采集、建模与仿冒。用声无恙将防线前移，在内容发布前对声纹进行主动保护。</p>
+      <div class="split-grid">
+        <div class="soft-panel panel-pink">
+          <h3 class="panel-title">社会风险现状</h3>
+          <div class="risk-cards">
+            <div class="risk-card"><strong>低门槛</strong><span>少量音频即可建模</span></div>
+            <div class="risk-card"><strong>高迷惑</strong><span>真实语气与声线仿冒</span></div>
+            <div class="risk-card"><strong>广传播</strong><span>社交平台快速扩散</span></div>
+          </div>
+          <p class="section-desc" style="text-align:left;margin:24px 0 0">AI 语音诈骗、身份冒充、恶意剪辑和声音版权滥用，让个人、机构与内容创作者都面临声纹泄露风险。</p>
+        </div>
+        <div class="divider-dash"></div>
+        <div class="soft-panel panel-mint">
+          <h3 class="panel-title">现有技术痛点</h3>
+          <div class="pain-list">
+            <div class="pain-item"><span class="pain-icon">🔍</span><div><b>被动检测滞后</b><br><small>伪造内容出现后才能识别，无法事前防护。</small></div></div>
+            <div class="pain-item"><span class="pain-icon">🎧</span><div><b>保真度不足</b><br><small>扰动过强容易影响用户正常听感。</small></div></div>
+            <div class="pain-item"><span class="pain-icon">🌧</span><div><b>抗压缩能力弱</b><br><small>平台重采样、转码、剪裁后防御效果下降。</small></div></div>
+            <div class="pain-item"><span class="pain-icon">🧩</span><div><b>未知模型泛化不足</b><br><small>面对黑盒克隆模型时稳定性不够。</small></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="solution">
+    <div class="container">
+      <span class="kicker">整体方案</span>
+      <h2 class="section-title">发布前主动防御，让克隆模型<span>学不到真实你</span></h2>
+      <p class="section-desc">系统围绕音视频上传、人声定位、防御扰动生成、匿名化身份替换和防御结果评估构建完整闭环。</p>
+      <div class="flow-row">
+        <div class="flow-step"><div class="step-icon">🎬</div><b>原始音视频</b></div>
+        <div class="flow-step"><div class="step-icon">👂</div><b>人声定位</b></div>
+        <div class="flow-step"><div class="step-icon">🛡</div><b>UnVC 防御</b></div>
+        <div class="flow-step"><div class="step-icon">✨</div><b>匿名化扰动</b></div>
+        <div class="flow-step"><div class="step-icon">📦</div><b>防御后输出</b></div>
+        <div class="flow-step"><div class="step-icon">🚫</div><b>克隆失效</b></div>
+      </div>
+      <div class="adv-grid" style="margin-top:34px">
+        <div class="adv-card"><div class="adv-icon">⚔️</div><h3>高抗克隆</h3><p>扰乱声纹模型的身份表征，使克隆结果偏离原始说话人。</p></div>
+        <div class="adv-card"><div class="adv-icon">🎵</div><h3>高保真</h3><p>控制扰动幅度和基音变化，保持自然听感与可传播性。</p></div>
+        <div class="adv-card"><div class="adv-icon">🌈</div><h3>强鲁棒</h3><p>面向重采样、剪裁、加噪和压缩等平台处理进行优化。</p></div>
+        <div class="adv-card"><div class="adv-icon">🧠</div><h3>强泛化</h3><p>动态集成多类说话人编码器，提升未知模型防御稳定性。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tech">
+    <div class="container">
+      <span class="kicker">核心技术</span>
+      <h2 class="section-title">四类关键算法共同形成<span>声纹防护层</span></h2>
+      <div class="tech-stack">
+        <article class="tech-card mint"><div><h3 class="tech-title">匿名异性身份替换的声纹防御</h3><p>基于 KL 散度选择与源声纹差异最大的匿名目标方向，提升对克隆模型的身份偏移能力。</p><div class="mini-flow"><span>源声纹嵌入</span><span>KL 散度筛选</span><span>匿名目标身份</span></div></div><div class="data-pill"><strong>3.71</strong><span>黑盒 PSD 指标</span></div></article>
+        <article class="tech-card pink"><div><h3 class="tech-title">高斯扰动优化的 WaveGlow 对抗语音生成</h3><p>在声码器生成流程中引入可控扰动，并通过分布约束增强跨平台压缩后的防御稳定性。</p><div class="mini-flow"><span>声码器生成</span><span>高斯扰动</span><span>鲁棒输出</span></div></div><div class="data-pill"><strong>60.04%</strong><span>抗压缩防御成功率</span></div></article>
+        <article class="tech-card purple"><div><h3 class="tech-title">动态权重调整的集成说话人编码器策略</h3><p>融合 ECAPA、GE2E、d-vector、Style Encoder 等多类表征，降低对单一模型结构的依赖。</p><div class="mini-flow"><span>多编码器</span><span>动态权重</span><span>泛化增强</span></div></div><div class="data-pill"><strong>66.29%</strong><span>未知黑盒防御成功率</span></div></article>
+        <article class="tech-card blue"><div><h3 class="tech-title">梯度正则化与锐度感知最小化扰动优化</h3><p>通过 SAM 思路约束扰动落在更平坦的优化区域，提升未知攻击模型下的稳定表现。</p><div class="mini-flow"><span>梯度正则</span><span>SAM 优化</span><span>平坦扰动</span></div></div><div class="data-pill"><strong>84.73%</strong><span>语音保真相似度</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="features">
+    <div class="container">
+      <span class="kicker">系统功能</span>
+      <h2 class="section-title">从防御处理到效果测试的<span>完整交互流程</span></h2>
+      <div class="feature-grid">
+        <a class="feature-card" href="audio-defend.html"><div class="feature-icon">🎧</div><h3>音频防御</h3><p>支持 WAV / MP3，生成防克隆音频并展示波形与评估结果。</p><div class="mock-ui"></div></a>
+        <a class="feature-card" href="video-defend.html"><div class="feature-icon">🎬</div><h3>视频防御</h3><p>提取视频人声轨道，画面不变，重新封装防御后视频。</p><div class="mock-ui"></div></a>
+        <a class="feature-card" href="audio-transform.html"><div class="feature-icon">🧪</div><h3>音频转换测试</h3><p>模拟语音转换攻击，观察克隆相似度下降结果。</p><div class="mock-ui"></div></a>
+        <a class="feature-card" href="audio-synthesis.html"><div class="feature-icon">📝</div><h3>音频合成测试</h3><p>模拟 TTS 克隆合成，验证目标音色保护效果。</p><div class="mock-ui"></div></a>
+      </div>
+      <div class="tag-cloud"><span>精准人声定位</span><span>高效并行处理</span><span>高兼容性导出</span><span>可视化评估报告</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="results">
+    <div class="container">
+      <span class="kicker">测试成果</span>
+      <h2 class="section-title">多维度验证防御效果与<span>听感保真</span></h2>
+      <table class="result-table">
+        <thead><tr><th>指标维度</th><th>UnVC</th><th>对比方案</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>保真度</td><td><span class="highlight">84.73%</span></td><td>72% 左右</td><td>防御后仍保持自然听感</td></tr>
+          <tr><td>抗克隆能力</td><td><span class="highlight">PSD 3.71</span></td><td>2.1 - 2.6</td><td>克隆结果明显偏移</td></tr>
+          <tr><td>鲁棒性</td><td><span class="highlight">60.04%</span></td><td>39% - 44%</td><td>压缩和转码后仍有效</td></tr>
+          <tr><td>泛化性</td><td><span class="highlight">66.29%</span></td><td>45% - 51%</td><td>未知黑盒模型表现稳定</td></tr>
+        </tbody>
+      </table>
+      <div class="progress-wrap">
+        <div class="circle-stat"><div class="ring">4.31</div><div><h3>MOS 主观听感</h3><p>用户主观评价保持较高自然度。</p></div></div>
+        <div class="circle-stat"><div class="ring pink">3.71</div><div><h3>PSD 防御偏移</h3><p>克隆声纹与原始声纹距离显著扩大。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="future">
+    <div class="container">
+      <span class="kicker">应用前景</span>
+      <h2 class="section-title">面向多场景的<span>声音安全基础设施</span></h2>
+      <div class="scenario-grid">
+        <div class="scenario-card"><div class="scenario-icon">🗣</div><h3>公众人物保护</h3><p>降低采访、演讲、直播切片被冒充的风险。</p></div>
+        <div class="scenario-card"><div class="scenario-icon">🏦</div><h3>金融反欺诈</h3><p>辅助降低电话诈骗和远程身份欺骗风险。</p></div>
+        <div class="scenario-card"><div class="scenario-icon">🎙</div><h3>声音版权保护</h3><p>保护主播、播客、配音演员的声音资产。</p></div>
+        <div class="scenario-card"><div class="scenario-icon">🔐</div><h3>个人隐私防护</h3><p>让日常音视频分享不再直接暴露可克隆声纹。</p></div>
+      </div>
+      <div class="timeline">
+        <div class="time-item" data-num="1"><b>算法性能优化</b><br>继续提升未知模型防御稳定性。</div>
+        <div class="time-item" data-num="2"><b>保真度升级</b><br>进一步降低扰动对自然听感的影响。</div>
+        <div class="time-item" data-num="3"><b>编码器更新</b><br>扩展更多说话人表征模型。</div>
+        <div class="time-item" data-num="4"><b>API 落地</b><br>提供平台侧批量处理和内容发布前防护能力。</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-macaron">
+    <div class="container footer-grid">
+      <div><h2 class="gradient-text">用声无恙</h2><p>从源头阻断语音克隆，守护每一段声音的安全。</p></div>
+      <div class="footer-links"><a href="#tech">核心技术</a><a href="#features">系统功能</a><a href="#results">测试成果</a><a href="#future">应用前景</a></div>
+    </div>
+    <div class="site-footer">© 2026 用声无恙 UnVoiceClone 声纹隐私保护系统</div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
