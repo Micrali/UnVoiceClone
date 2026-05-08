@@ -1,1 +1,87 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>视频防御 - UnVC</title><link rel="stylesheet" href="styles.css"><script src="components.js"></script></head><body class="macaron-page"><script>renderHeader('video')</script><main class="container corner-wrap"><script>breadcrumb('视频防御')</script><section class="page-heading"><h1>视频防御</h1><p>此功能将上传视频中的说话人音频部分通过 UnVC 防御保护生成具备抗克隆能力的视频，保证视频画面不变，同时有效保护说话人声纹隐私。</p></section><section class="cards-two"><div class="function-card"><h3>原始视频</h3><p>输入视频：interview_clip_demo.mp4，自动提取音轨并定位人声片段。</p><video class="real-video" controls preload="metadata"><source src="interview_clip_demo.mp4" type="video/mp4">当前浏览器不支持视频播放。</video><div class="card-actions"><button class="btn btn-secondary">上传视频</button><button class="btn btn-primary">播放原始视频</button></div></div><div class="flow-badge">UnVC防御</div><div class="function-card"><h3>防御后视频</h3><p>输出视频：unvc_defended_video.mp4，画面不变，仅替换防御后人声音轨。</p><video class="real-video" controls preload="metadata"><source src="interview_clip_demo.mp4" type="video/mp4">当前浏览器不支持视频播放。</video><div class="card-actions"><button class="btn btn-primary" onclick="defend('video')">开始防御</button><button class="btn btn-secondary">下载视频</button></div></div></section><section class="metrics-grid"><div class="metric-card"><div class="metric-value">4段</div><div class="metric-label">识别人声片段</div></div><div class="metric-card"><div class="metric-value">22.6s</div><div class="metric-label">防御处理人声时长</div></div><div class="metric-card"><div class="metric-value">28%</div><div class="metric-label">处理后克隆风险</div></div></section><div class="result-box" id="result"><strong>处理结果：</strong><br>点击“开始防御”后将展示视频防御输出、识别人声片段和克隆风险下降结果。</div></main><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>视频防御 - 用声无恙</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="components.js"></script>
+</head>
+<body class="macaron-page video-demo-page">
+  <script>renderHeader('video')</script>
+  <main class="video-defend-wrap">
+    <script>breadcrumb('视频防御')</script>
+
+    <section class="video-hero">
+      <div>
+        <span class="kicker">视频防御</span>
+        <h1>视频声纹隐私保护</h1>
+        <p>加载视频后先展示播放器和基础文件信息，核心防御指标会在“防御完成”后以醒目的结果卡片呈现。</p>
+      </div>
+      <button id="oneClickDemo" class="btn btn-primary demo-cta">一键演示</button>
+    </section>
+
+    <section class="soft-panel upload-panel">
+      <div class="upload-copy">
+        <h2>上传视频</h2>
+        <p>默认使用预设视频，也可手动选择本地视频；加载后可直接在播放器中预览真实视频内容。</p>
+      </div>
+      <div class="upload-actions">
+        <input id="videoInput" type="file" accept="video/mp4,video/webm,video/ogg" hidden>
+        <button id="uploadBtn" class="btn btn-secondary">选择视频文件</button>
+        <button id="loadPresetBtn" class="btn btn-pink">加载预设素材</button>
+      </div>
+      <div id="fileInfo" class="file-info">当前预设：interview_clip_demo.mp4　输入视频总时长：15s　格式：MP4</div>
+    </section>
+
+    <section class="video-grid">
+      <article class="soft-panel player-card">
+        <div class="card-head"><h3>原始视频</h3><span>Original</span></div>
+        <div class="video-stage" id="originalStage">
+          <video id="originalVideo" controls preload="metadata" playsinline src="interview_clip_demo.mp4"></video>
+        </div>
+      </article>
+      <article class="soft-panel player-card">
+        <div class="card-head"><h3>防御后视频</h3><span>Protected</span></div>
+        <div class="video-stage" id="defendedStage">
+          <video id="defendedVideo" controls preload="metadata" playsinline></video>
+        </div>
+      </article>
+    </section>
+
+    <section id="timelinePanel" class="soft-panel timeline-panel result-reveal hidden">
+      <div class="card-head"><h2>人声识别时间轴</h2><span>输入视频总时长：15s</span></div>
+      <div class="voice-timeline" aria-label="15秒视频中的人声片段时间轴">
+        <div class="axis-line"></div>
+        <div class="voice-segment" style="left:3.33%;width:18%;" data-tip="0.5s - 3.2s，单段时长 2.7s"><span>0.5s-3.2s</span></div>
+        <div class="voice-segment" style="left:34%;width:28.67%;" data-tip="5.1s - 9.4s，单段时长 4.3s"><span>5.1s-9.4s</span></div>
+        <div class="voice-segment" style="left:74.67%;width:11.33%;" data-tip="11.2s - 12.9s，单段时长 1.7s"><span>11.2s-12.9s</span></div>
+      </div>
+      <p class="timeline-note">仅对视频内人声片段进行防御处理，画面、背景音乐、环境音均保持不变。</p>
+    </section>
+
+    <section id="metricGrid" class="metric-grid result-reveal hidden">
+      <div class="metric-card"><span>识别人声片段</span><strong>3 段</strong><small>精准定位 3 个不连续人声区间</small></div>
+      <div class="metric-card"><span>防御处理人声时长</span><strong>8.7s</strong><small>3 段人声累计处理时长</small></div>
+      <div class="metric-card risk-drop"><span>处理后克隆风险</span><strong>21.8%</strong><small>原始 98% → 防御后 21.8%</small></div>
+    </section>
+
+    <section class="soft-panel action-panel">
+      <div>
+        <h2>执行防御处理</h2>
+        <p id="processText">请先加载视频。防御完成后会展示人声时间轴、核心指标卡和风险下降结果。</p>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      </div>
+      <div class="action-buttons">
+        <button id="startDefense" class="btn btn-primary">开始防御</button>
+        <button id="downloadVideo" class="btn btn-secondary" disabled>下载视频</button>
+      </div>
+    </section>
+
+    <div class="result-box result-box-strong hidden" id="result"></div>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+  <script src="video-defend.js"></script>
+</body>
+</html>
